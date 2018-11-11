@@ -60,7 +60,6 @@ public class PresenceOverflow
             DiscordRPC.discordShutdown();
         }));
         DiscordEventHandlers handlers = new DiscordEventHandlers.Builder().setReadyEventHandler((user) -> {
-            DiscordRPC.discordRunCallbacks();
             System.out.println(user.username + " (began rp)");
             DiscordRPC.discordUpdatePresence(build());
         }).build();
@@ -75,6 +74,11 @@ public class PresenceOverflow
           {
               DiscordRPC.discordRunCallbacks();
               DiscordRPC.discordUpdatePresence(build());
+              try {
+                  Thread.sleep(5000);
+              } catch (InterruptedException e) {
+                  e.printStackTrace();
+              }
           }
         };
     }
