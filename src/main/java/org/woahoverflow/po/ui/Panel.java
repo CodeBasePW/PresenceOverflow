@@ -118,7 +118,7 @@ public class Panel extends JPanel
         add(appIdValue);
 
         // STATUS
-        status = new JLabel("Loading");
+        status = new JLabel("Enter APP ID");
         status.setFont(font);
         status.setBounds(650, 20, 200, status.getPreferredSize().height);
         add(status);

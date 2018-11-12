@@ -6,6 +6,8 @@ import net.arikia.dev.drpc.DiscordRichPresence;
 import org.woahoverflow.po.ui.Panel;
 
 import javax.swing.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.Executors;
 
 public class PresenceOverflow
@@ -42,6 +44,29 @@ public class PresenceOverflow
             refresh();
         });
         panel.refresh.addActionListener((ev) -> refresh());
+    }
+
+    private static void save()
+    {
+        if (new File(System.getenv("appdata") + "\\woahoverflow\\presenceoverflow\\data.json").exists())
+        {
+            // TODO do stuff
+        }
+        else {
+            try {
+                if (!new File(System.getenv("appdata") + "\\woahoverflow\\presenceoverflow").mkdirs())
+                    panel.status.setText("Error Saving");
+                if (!new File(System.getenv("appdata") + "\\woahoverflow\\presenceoverflow\\data.json").createNewFile())
+                    panel.status.setText("Error Saving");
+            } catch (IOException e)
+            {
+                panel.status.setText("Error Saving");
+            }
+            finally
+            {
+                // TODO do stuff
+            }
+        }
     }
 
     private static void refresh()
