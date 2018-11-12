@@ -1,5 +1,6 @@
 # PresenceOverflow
-Adds a nice UI that allows you to change your Discord Rich Presence.
+Adds a nice UI that allows you to change your Discord Rich Presence.<br>
+Download the most recent version [here](https://github.com/woahoverflow/PresenceOverflow/releases/download/v1.0/PresenceOverflow.jar).
 
 ## How To
 #### Beginning
