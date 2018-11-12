@@ -15,6 +15,8 @@ public class Panel extends JPanel
     public JTextArea smallImageCaption;
     public JLabel status;
     public JButton refresh;
+    public JTextArea appIdValue;
+    public JButton go;
 
     public Panel()
     {
@@ -32,6 +34,7 @@ public class Panel extends JPanel
         JLabel bigImageCaptionText = new JLabel("Big Image Caption");
         JLabel smallImageKeyText = new JLabel("Small Image Key");
         JLabel smallImageCaptionText = new JLabel("Small Image Caption");
+        JLabel appIdText = new JLabel("App ID");
 
         // DETAILS
         detailsText.setFont(font);
@@ -103,6 +106,17 @@ public class Panel extends JPanel
         smallImageCaption.setBounds(280, 220, 350, smallImageCaptionText.getPreferredSize().height);
         add(smallImageCaption);
 
+        // application ID
+        appIdText.setFont(font);
+        appIdText.setBounds(20, 260, appIdText.getPreferredSize().width, appIdText.getPreferredSize().height);
+        add(appIdText);
+
+        appIdValue = new JTextArea();
+        appIdValue.setFont(font);
+        appIdValue.setText("");
+        appIdValue.setBounds(280, 260, 350, appIdText.getPreferredSize().height);
+        add(appIdValue);
+
         // STATUS
         status = new JLabel("Loading");
         status.setFont(font);
@@ -112,7 +126,14 @@ public class Panel extends JPanel
         // REFRESH
         refresh = new JButton("Reload");
         refresh.setFont(font);
-        refresh.setBounds(680, 220, refresh.getPreferredSize().width, refresh.getPreferredSize().height);
+        refresh.setBounds(680, 260, refresh.getPreferredSize().width, refresh.getPreferredSize().height);
+        refresh.setVisible(false);
         add(refresh);
+
+        go = new JButton("Go");
+        go.setFont(font);
+        go.setBounds(680, 260, go.getPreferredSize().width, go.getPreferredSize().height);
+        go.setText("Go");
+        add(go);
     }
 }

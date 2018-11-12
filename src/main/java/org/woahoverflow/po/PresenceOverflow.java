@@ -6,6 +6,7 @@ import net.arikia.dev.drpc.DiscordRichPresence;
 import org.woahoverflow.po.ui.Panel;
 
 import javax.swing.*;
+import java.util.concurrent.Executors;
 
 public class PresenceOverflow
 {
@@ -16,25 +17,36 @@ public class PresenceOverflow
     private static String BIG_IMAGE = "";
     private static String SMALL_IMAGE_CAPTION = "";
     private static String SMALL_IMAGE = "";
-    private static String USERNAME = "";
     private static boolean ENABLED = true;
+    private static DiscordEventHandlers HANDLERS = new DiscordEventHandlers.Builder().setReadyEventHandler((user) -> DiscordRPC.discordUpdatePresence(build())).build();
 
     public static void main(String... args)
     {
+        Runtime.getRuntime().addShutdownHook(new Thread(DiscordRPC::discordShutdown));
         JFrame frame = new JFrame("PresenceOverflow");
         frame.getContentPane().add(panel);
         frame.setVisible(true);
-        frame.setSize(850, 300);
+        frame.setSize(850, 340);
         frame.setResizable(false);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        initDiscord();
 
-        panel.refresh.addActionListener((ev) -> {
-            panel.status.setText("Refreshing...");
-            DiscordRPC.discordUpdatePresence(build());
-            DiscordRPC.discordRunCallbacks();
-            panel.status.setText(USERNAME);
+        panel.go.addActionListener((ev) -> {
+            if (panel.appIdValue.getText().equals(""))
+            {
+                panel.status.setText("Invalid App ID!");
+                return;
+            }
+            panel.refresh.setVisible(true);
+            panel.go.setVisible(false);
+            initDiscord();
+            refresh();
         });
+        panel.refresh.addActionListener((ev) -> refresh());
+    }
+
+    private static void refresh()
+    {
+        DiscordRPC.discordUpdatePresence(build());
     }
 
     private static DiscordRichPresence build()
@@ -72,14 +84,9 @@ public class PresenceOverflow
 
     private static void initDiscord()
     {
-        Runtime.getRuntime().addShutdownHook(new Thread(DiscordRPC::discordShutdown));
-        DiscordEventHandlers handlers = new DiscordEventHandlers.Builder().setReadyEventHandler((user) -> {
-            USERNAME = user.username;
-            panel.status.setText(user.username);
-            DiscordRPC.discordUpdatePresence(build());
-        }).build();
-        DiscordRPC.discordInitialize("511091069824270352", handlers, true);
-        new Thread(constant()).run();
+        DiscordRPC.discordInitialize(panel.appIdValue.getText().trim(), HANDLERS, true);
+        Executors.newFixedThreadPool(1).submit(PresenceOverflow::constant);
+        panel.status.setText("Running...");
     }
 
     private static Runnable constant()
@@ -87,7 +94,6 @@ public class PresenceOverflow
         return () -> {
           while (ENABLED)
           {
-              panel.status.setText(USERNAME);
               DiscordRPC.discordRunCallbacks();
               DiscordRPC.discordUpdatePresence(build());
               try {
