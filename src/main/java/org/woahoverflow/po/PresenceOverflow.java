@@ -5,9 +5,13 @@ import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
 import org.woahoverflow.po.ui.Panel;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.concurrent.Executors;
 
 public class PresenceOverflow
@@ -26,6 +30,12 @@ public class PresenceOverflow
     {
         Runtime.getRuntime().addShutdownHook(new Thread(DiscordRPC::discordShutdown));
         JFrame frame = new JFrame("PresenceOverflow");
+        try {
+            URLConnection con = new URL("https://raw.githubusercontent.com/woahoverflow/PresenceOverflow/master/icon.png").openConnection();
+            frame.setIconImage(ImageIO.read(con.getInputStream()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         frame.getContentPane().add(panel);
         frame.setVisible(true);
         frame.setSize(850, 340);
@@ -45,7 +55,6 @@ public class PresenceOverflow
         });
         panel.refresh.addActionListener((ev) -> refresh());
     }
-
     private static void save()
     {
         if (new File(System.getenv("appdata") + "\\woahoverflow\\presenceoverflow\\data.json").exists())
