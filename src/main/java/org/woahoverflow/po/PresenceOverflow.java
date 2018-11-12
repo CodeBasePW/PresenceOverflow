@@ -16,6 +16,7 @@ public class PresenceOverflow
     private static String BIG_IMAGE = "";
     private static String SMALL_IMAGE_CAPTION = "";
     private static String SMALL_IMAGE = "";
+    private static String USERNAME = "";
     private static boolean ENABLED = true;
 
     public static void main(String... args)
@@ -23,15 +24,27 @@ public class PresenceOverflow
         JFrame frame = new JFrame("PresenceOverflow");
         frame.getContentPane().add(panel);
         frame.setVisible(true);
-        frame.setSize(1000, 1000);
+        frame.setSize(850, 300);
+        frame.setResizable(false);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         initDiscord();
+
+        panel.refresh.addActionListener((ev) -> {
+            panel.status.setText("Refreshing...");
+            DiscordRPC.discordUpdatePresence(build());
+            DiscordRPC.discordRunCallbacks();
+            panel.status.setText(USERNAME);
+        });
     }
 
     private static DiscordRichPresence build()
     {
         update();
         if (STATE.equals(""))
+        {
+            panel.status.setText("Invalid State!");
             return null;
+        }
 
         DiscordRichPresence.Builder rp = new DiscordRichPresence.Builder(STATE);
 
@@ -50,17 +63,19 @@ public class PresenceOverflow
     private static void update()
     {
         STATE = panel.stateValue.getText().trim();
+        BIG_IMAGE_CAPTION = panel.bigImageCaption.getText().trim();
+        BIG_IMAGE = panel.bigImageKeyValue.getText().trim();
+        SMALL_IMAGE = panel.smallImageKeyValue.getText().trim();
+        SMALL_IMAGE_CAPTION = panel.smallImageCaption.getText().trim();
         DETAILS = panel.detailsValue.getText().trim();
     }
 
     private static void initDiscord()
     {
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            System.out.println("Shutting down DiscordHook.");
-            DiscordRPC.discordShutdown();
-        }));
+        Runtime.getRuntime().addShutdownHook(new Thread(DiscordRPC::discordShutdown));
         DiscordEventHandlers handlers = new DiscordEventHandlers.Builder().setReadyEventHandler((user) -> {
-            System.out.println(user.username + " (began rp)");
+            USERNAME = user.username;
+            panel.status.setText(user.username);
             DiscordRPC.discordUpdatePresence(build());
         }).build();
         DiscordRPC.discordInitialize("511091069824270352", handlers, true);
@@ -72,6 +87,7 @@ public class PresenceOverflow
         return () -> {
           while (ENABLED)
           {
+              panel.status.setText(USERNAME);
               DiscordRPC.discordRunCallbacks();
               DiscordRPC.discordUpdatePresence(build());
               try {

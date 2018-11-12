@@ -15,8 +15,6 @@
         </plugins>
     </build>
     <modelVersion>4.0.0</modelVersion>
-
-
     <groupId>org.woahoverflow</groupId>
     <artifactId>PresenceOverflow</artifactId>
     <version>v0.1.0-A</version>
