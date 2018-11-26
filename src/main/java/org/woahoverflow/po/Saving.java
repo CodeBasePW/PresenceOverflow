@@ -6,7 +6,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import static org.woahoverflow.po.PresenceOverflow.ui;
 
-public class Saving
+public final class Saving
 {
     public static void save()
     {
