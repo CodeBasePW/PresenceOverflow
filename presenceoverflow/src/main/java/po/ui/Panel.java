@@ -17,7 +17,7 @@ public class Panel extends JPanel {
 		JLabel clientID = new JLabel();
 		stateLabel = new JLabel();
 		detailsLabel = new JLabel();
-		biglImageKeyLabel = new JLabel();
+		bigImageKeyLabel = new JLabel();
 		smallImageKeyLabel = new JLabel();
 		bigImageCaptionLabel = new JLabel();
 		smallImageCaptionLabel = new JLabel();
@@ -36,7 +36,6 @@ public class Panel extends JPanel {
 		profileThreeLabel = new JLabel();
 		favicon = new JLabel();
 		loggedIn = new JLabel();
-		signIn = new JButton();
 		detailsTextArea = new JFormattedTextField();
 		stateTextArea = new JFormattedTextField();
 		imageKeyTextArea = new JFormattedTextField();
@@ -44,6 +43,7 @@ public class Panel extends JPanel {
 		imageCaptionTextArea = new JFormattedTextField();
 		smallImageCaptionTextArea = new JFormattedTextField();
 		clientIdTextArea = new JFormattedTextField();
+		statusLabel = new JLabel();
 
 		//======== this ========
 		setLayout(null);
@@ -66,11 +66,11 @@ public class Panel extends JPanel {
 		add(detailsLabel);
 		detailsLabel.setBounds(125, 30, 50, 20);
 
-		//---- biglImageKeyLabel ----
-		biglImageKeyLabel.setText("Big Image Key");
-		biglImageKeyLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		add(biglImageKeyLabel);
-		biglImageKeyLabel.setBounds(70, 80, 105, 20);
+		//---- bigImageKeyLabel ----
+		bigImageKeyLabel.setText("Big Image Key");
+		bigImageKeyLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		add(bigImageKeyLabel);
+		bigImageKeyLabel.setBounds(70, 80, 105, 20);
 
 		//---- smallImageKeyLabel ----
 		smallImageKeyLabel.setText("Small Image Key");
@@ -99,12 +99,12 @@ public class Panel extends JPanel {
 		//---- reload ----
 		reload.setText("Reload");
 		add(reload);
-		reload.setBounds(375, 10, 65, 30);
+		reload.setBounds(425, 10, 65, 30);
 
 		//---- exit ----
 		exit.setText("Exit");
 		add(exit);
-		exit.setBounds(445, 10, 60, 30);
+		exit.setBounds(495, 10, 60, 30);
 
 		//---- profileLabel ----
 		profileLabel.setText("Profiles");
@@ -168,17 +168,22 @@ public class Panel extends JPanel {
 
 		//---- loggedIn ----
 		loggedIn.setText("ASDPFOKSDPFOKDSPFOKSDPOFKSDPOKFSDKFPSDFKPSDFKPSDOFKSDKFPSDKFPOSDKFPOSDKFPOSDKFOPKSDF");
-		loggedIn.setText("Currently signed out");
+		loggedIn.setText("Guest");
 		loggedIn.setFont(loggedIn.getFont().deriveFont(loggedIn.getFont().getSize() + 6f));
 		add(loggedIn);
-		loggedIn.setBounds(new Rectangle(new Point(60, 220), loggedIn.getPreferredSize()));
+		loggedIn.setBounds(new Rectangle(new Point(35, 250), loggedIn.getPreferredSize()));
 
-		//---- signIn ----
-		signIn.setText("Sign In");
-		add(signIn);
-		signIn.setBounds(new Rectangle(new Point(85, 245), signIn.getPreferredSize()));
-		add(clientIdTextArea);
+		//---- loggedIn ----
+		statusLabel.setForeground(Color.RED);
+		statusLabel.setFont(statusLabel.getFont().deriveFont(statusLabel.getFont().getSize() + 6f));
+		statusLabel.setText("ASDPFOKSDPFOKDSPFOKSDPOFKSDPOKFSDKFPSDFKPSDFKPSDOFKSDKFPSDKFPOSDKFPOSDKFPOSDKFOPKSDF");
+		statusLabel.setText("Unloaded");
+		add(statusLabel);
+		statusLabel.setBounds(new Rectangle(new Point(35, 210), statusLabel.getPreferredSize()));
+
+
 		clientIdTextArea.setBounds(175, 5, 140, 20);
+		add(clientIdTextArea);
 		add(detailsTextArea);
 		detailsTextArea.setBounds(175, 30, 140, detailsTextArea.getPreferredSize().height);
 		add(stateTextArea);
@@ -208,7 +213,7 @@ public class Panel extends JPanel {
 	}
 	public JLabel stateLabel;
 	public JLabel detailsLabel;
-	public JLabel biglImageKeyLabel;
+	public JLabel bigImageKeyLabel;
 	public JLabel smallImageKeyLabel;
 	public JLabel bigImageCaptionLabel;
 	public JLabel smallImageCaptionLabel;
@@ -227,7 +232,6 @@ public class Panel extends JPanel {
 	public JLabel profileThreeLabel;
 	public JLabel favicon;
 	public JLabel loggedIn;
-	public JButton signIn;
 	public JFormattedTextField clientIdTextArea;
 	public JFormattedTextField detailsTextArea;
 	public JFormattedTextField stateTextArea;
@@ -235,4 +239,5 @@ public class Panel extends JPanel {
 	public JFormattedTextField smallImageKeyTextArea;
 	public JFormattedTextField imageCaptionTextArea;
 	public JFormattedTextField smallImageCaptionTextArea;
+	public JLabel statusLabel;
 }

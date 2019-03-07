@@ -17,7 +17,11 @@ import java.net.URLConnection;
  *
  * TODO Fix multiple image requests
  * TODO Make it look better (center text better)
- * TODO Only allow with login :)
+ * TODO Only allow with login
+ * TODO Save the token in file
+ * TODO Make the exit button in the top right
+ * TODO Make auto updating
+ * TODO
  */
 public class PresenceOverflow {
     public static final Logger LOGGER = LoggerFactory.getLogger("PresenceOverflow");

@@ -1,5 +1,6 @@
 package po.ui
 
+import net.arikia.dev.drpc.DiscordRPC
 import po.*
 import po.site.loggedIn
 import po.site.login
@@ -14,6 +15,13 @@ import javax.imageio.ImageIO
 import javax.swing.ImageIcon
 import javax.swing.JFrame
 import javax.swing.WindowConstants
+import com.sun.awt.SecurityWarning.getSize
+import javax.swing.Spring.height
+import javax.swing.Spring.width
+import java.awt.Toolkit.getDefaultToolkit
+import java.awt.Dimension
+import java.awt.Toolkit
+
 
 /**
  * The main panel
@@ -49,8 +57,30 @@ fun init() {
         TrayMenu.init()
     }
 
+    initActionListeners()
+
+    signInFrame.add(signIn)
+    signInFrame.iconImage = ImageIcon(PresenceOverflow.SMALL_ICON).image
+    signInFrame.title = "Sign In"
+    signInFrame.setSize(227, 276)
+    signInFrame.setLocationRelativeTo(null)
+    signInFrame.isVisible = true
+    signInFrame.isResizable = false
+
+    jFrame.title = "PresenceOverflow"
+    jFrame.defaultCloseOperation = WindowConstants.HIDE_ON_CLOSE
+    jFrame.add(panel)
+    jFrame.iconImage = ImageIcon(PresenceOverflow.SMALL_ICON).image
+    jFrame.setSize(574, 320)
+    jFrame.setLocationRelativeTo(null)
+    jFrame.isVisible = false
+    jFrame.isResizable = false
+}
+
+fun initActionListeners() {
     val actionListener = ActionListener {
         if (usingTray()) TrayMenu.exit()
+        DiscordRPC.discordShutdown()
 
         System.exit(1)
     }
@@ -80,6 +110,7 @@ fun init() {
         useProfile(2)
     }
     else panel.profileThreeLabel.foreground = Color.RED
+
 
     // Saves the current configuration to profile one
     panel.saveToOne.addActionListener {
@@ -158,17 +189,6 @@ fun init() {
         useProfile(2)
     }
 
-    // If they're attempting to sign in
-    panel.signIn.addActionListener {
-        signInFrame.isVisible = true
-    }
-
-    signIn.exitButton.addActionListener {
-        signInFrame.isVisible = false
-        signIn.passwordField.text = ""
-        signIn.usernameField.text = ""
-    }
-
     panel.reload.addActionListener {
         refresh(
                 panel.clientIdTextArea.text,
@@ -185,6 +205,15 @@ fun init() {
         )
     }
 
+    initSignIn()
+}
+
+fun initSignIn() {
+    signIn.guestButton.addActionListener {
+        jFrame.isVisible = true
+        signInFrame.isVisible = false
+    }
+
     signIn.signInButton.addActionListener {
         if (loggedIn) {
             logout()
@@ -192,29 +221,19 @@ fun init() {
             val user = signIn.usernameField.text
             val password = String(signIn.passwordField.password)
 
-            PresenceOverflow.LOGGER.debug("Signing in with $user and $password...")
-
             if (login(user, password)) {
                 signInFrame.isVisible = false
+                jFrame.isVisible = true
                 signIn.status.isVisible = false
-                panel.loggedIn.text = "Signed in as ${username!!}"
-                panel.signIn.text = "Log out"
+
+                panel.loggedIn.text = username
             }
         }
     }
 
-    signInFrame.add(signIn)
-    signInFrame.iconImage = ImageIcon(PresenceOverflow.SMALL_ICON).image
-    signInFrame.title = "Sign In"
-    signInFrame.setSize(227, 276)
-    signInFrame.isVisible = false
-    signInFrame.isResizable = false
-
-    jFrame.title = "PresenceOverflow"
-    jFrame.defaultCloseOperation = WindowConstants.HIDE_ON_CLOSE
-    jFrame.add(panel)
-    jFrame.iconImage = ImageIcon(PresenceOverflow.SMALL_ICON).image
-    jFrame.setSize(574, 320)
-    jFrame.isVisible = true
-    jFrame.isResizable = false
+    signIn.exitButton.addActionListener {
+        signInFrame.isVisible = false
+        signIn.passwordField.text = ""
+        signIn.usernameField.text = ""
+    }
 }

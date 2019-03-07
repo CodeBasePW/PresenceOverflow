@@ -27,7 +27,7 @@ public class SignIn extends JPanel {
 		signInButton = new JButton();
 		exitButton = new JButton();
 		status = new JLabel();
-		label4 = new JLabel();
+        guestButton = new JButton();
 
 		setLayout(null);
 
@@ -63,6 +63,11 @@ public class SignIn extends JPanel {
         add(signInButton);
         signInButton.setBounds(new Rectangle(new Point(125, 190), signInButton.getPreferredSize()));
 
+        //---- guestButton ----
+        guestButton.setText("Guest");
+        add(guestButton);
+        guestButton.setBounds(new Rectangle(new Point(77, 220), signInButton.getPreferredSize()));
+
         //---- exitButton ----
         exitButton.setText("Exit");
         add(exitButton);
@@ -71,9 +76,6 @@ public class SignIn extends JPanel {
         status.setVisible(false);
         add(status);
         status.setBounds(new Rectangle(new Point(41, 165), status.getPreferredSize()));
-
-		//---- label4 ----
-		label4.setText("text");
 	}
 
 	public JLabel logo;
@@ -85,5 +87,5 @@ public class SignIn extends JPanel {
     public JButton signInButton;
     public JButton exitButton;
     public JLabel status;
-    public JLabel label4;
+    public JButton guestButton;
 }
