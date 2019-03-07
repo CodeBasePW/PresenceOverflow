@@ -8,7 +8,7 @@ You can download the most recent version [here](https://github.com/woahoverflow/
 + Limited options for sign in (no register etc)
 + The end of the text options aren't the same (state, details etc)
 + Profiles are marked as green even though something's been altered
-+ Signing in is basically useless (save conigs on cloud)
++ Signing in is basically useless (save configs on cloud)
 
 ## How to
 To begin, head over to [here](https://discordapp.com/developers) and make sure you're signed in. After that, click on "New Application" on the dashboard. ![Dashboard](images/discord-dashboard.png "Dashboard")
