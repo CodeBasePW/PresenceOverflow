@@ -1,8 +1,8 @@
-package po.site
+package org.woahoverflow.po.site
 
 import com.mashape.unirest.http.Unirest
-import po.ui.panel
-import po.ui.signIn
+import org.woahoverflow.po.ui.panel
+import org.woahoverflow.po.ui.signIn
 
 var token: String? = null
 var loggedIn: Boolean = false

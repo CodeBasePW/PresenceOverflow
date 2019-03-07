@@ -1,26 +1,17 @@
-package po.ui
+package org.woahoverflow.po.ui
 
 import net.arikia.dev.drpc.DiscordRPC
-import po.*
-import po.site.loggedIn
-import po.site.login
-import po.site.logout
-import po.site.username
+import org.woahoverflow.po.site.loggedIn
+import org.woahoverflow.po.site.login
+import org.woahoverflow.po.site.logout
+import org.woahoverflow.po.site.username
 import java.awt.Color
 import java.awt.SystemTray
 import java.awt.event.ActionListener
-import java.awt.image.BufferedImage
-import java.net.URL
-import javax.imageio.ImageIO
 import javax.swing.ImageIcon
 import javax.swing.JFrame
 import javax.swing.WindowConstants
-import com.sun.awt.SecurityWarning.getSize
-import javax.swing.Spring.height
-import javax.swing.Spring.width
-import java.awt.Toolkit.getDefaultToolkit
-import java.awt.Dimension
-import java.awt.Toolkit
+import org.woahoverflow.po.*
 
 
 /**
@@ -62,7 +53,7 @@ fun init() {
     signInFrame.add(signIn)
     signInFrame.iconImage = ImageIcon(PresenceOverflow.SMALL_ICON).image
     signInFrame.title = "Sign In"
-    signInFrame.setSize(227, 276)
+    signInFrame.setSize(230, 280)
     signInFrame.setLocationRelativeTo(null)
     signInFrame.isVisible = true
     signInFrame.isResizable = false

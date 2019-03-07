@@ -1,9 +1,9 @@
-package po;
+package org.woahoverflow.po;
 
 import net.arikia.dev.drpc.DiscordRPC;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import po.ui.UIManagerKt;
+import org.woahoverflow.po.ui.UIManagerKt;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

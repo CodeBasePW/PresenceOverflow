@@ -1,11 +1,11 @@
-package po
+package org.woahoverflow.po
 
 import org.apache.commons.lang3.SystemUtils
 import java.io.File
 import java.io.IOException
 import org.json.JSONArray
 import org.json.JSONObject
-import po.ui.panel
+import org.woahoverflow.po.ui.panel
 import java.io.FileWriter
 
 

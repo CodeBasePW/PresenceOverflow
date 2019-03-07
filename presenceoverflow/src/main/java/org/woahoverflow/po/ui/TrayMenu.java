@@ -1,13 +1,10 @@
-package po.ui;
+package org.woahoverflow.po.ui;
 
-import po.PresenceOverflow;
+import org.woahoverflow.po.PresenceOverflow;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.net.URL;
-import java.net.URLConnection;
 
 /**
  * Manages the PresenceOverflow tray icon
@@ -15,10 +12,9 @@ import java.net.URLConnection;
  * @author sho
  */
 public class TrayMenu {
-    public static final MenuItem SHOW = new MenuItem("Show");
+    private static final MenuItem SHOW = new MenuItem("Show");
     public static final MenuItem EXIT = new MenuItem("Exit");
     private static TrayIcon TRAYICON = null;
-    private static PopupMenu POPUPMENU = null;
 
     /**
      * Instantiates the tray icon
@@ -55,23 +51,17 @@ public class TrayMenu {
             e.printStackTrace();
         }
         // Create a popup menu components
-        MenuItem show = new MenuItem("Show");
-        MenuItem exit = new MenuItem("Exit");
-
-        show.addActionListener((ev) -> UIManagerKt.getJFrame().setVisible(true));
-        exit.addActionListener((ev) -> System.exit(1));
+        SHOW.addActionListener((ev) -> UIManagerKt.getJFrame().setVisible(true));
 
         Font font = Font.getFont("Segoe UI");
-        show.setFont(font);
-        exit.setFont(font);
+        SHOW.setFont(font);
+        EXIT.setFont(font);
 
         //Add components to popup menu
-        popup.add(show);
-        popup.add(exit);
+        popup.add(SHOW);
+        popup.add(EXIT);
 
         TRAYICON = trayIcon;
-        POPUPMENU = popup;
-
         trayIcon.setPopupMenu(popup);
 
         try {

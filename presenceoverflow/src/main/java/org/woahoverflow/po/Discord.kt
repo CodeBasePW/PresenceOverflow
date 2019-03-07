@@ -1,9 +1,9 @@
-package po
+package org.woahoverflow.po
 
 import net.arikia.dev.drpc.DiscordEventHandlers
 import net.arikia.dev.drpc.DiscordRPC
 import net.arikia.dev.drpc.DiscordRichPresence
-import po.ui.panel
+import org.woahoverflow.po.ui.panel
 import java.awt.Color
 
 private var handlers: DiscordEventHandlers? = null

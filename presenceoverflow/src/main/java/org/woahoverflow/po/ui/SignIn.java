@@ -1,12 +1,8 @@
-package po.ui;
+package org.woahoverflow.po.ui;
 
-import po.PresenceOverflow;
+import org.woahoverflow.po.PresenceOverflow;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.net.URL;
-import java.net.URLConnection;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /**
