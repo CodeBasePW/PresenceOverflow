@@ -185,17 +185,6 @@ fun init() {
         )
     }
 
-    val image: BufferedImage
-    try {
-        val url = URL("https://assets.woahoverflow.org/favicon/dark-small.png")
-        val con = url.openConnection()
-        con.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0 Mozilla/5.0 (Macintosh; Intel Mac OS X x.y; rv:42.0) Gecko/20100101 Firefox/42.0")
-        image = ImageIO.read(con.getInputStream())
-    } catch (ex: Exception) {
-        ex.printStackTrace()
-        return
-    }
-
     signIn.signInButton.addActionListener {
         if (loggedIn) {
             logout()
@@ -215,7 +204,7 @@ fun init() {
     }
 
     signInFrame.add(signIn)
-    signInFrame.iconImage = ImageIcon(image).image
+    signInFrame.iconImage = ImageIcon(PresenceOverflow.SMALL_ICON).image
     signInFrame.title = "Sign In"
     signInFrame.setSize(227, 276)
     signInFrame.isVisible = false
@@ -224,7 +213,7 @@ fun init() {
     jFrame.title = "PresenceOverflow"
     jFrame.defaultCloseOperation = WindowConstants.HIDE_ON_CLOSE
     jFrame.add(panel)
-    jFrame.iconImage = ImageIcon(image).image
+    jFrame.iconImage = ImageIcon(PresenceOverflow.SMALL_ICON).image
     jFrame.setSize(574, 320)
     jFrame.isVisible = true
     jFrame.isResizable = false

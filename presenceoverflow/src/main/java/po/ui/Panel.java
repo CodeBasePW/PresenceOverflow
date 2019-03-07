@@ -1,5 +1,7 @@
 package po.ui;
 
+import po.PresenceOverflow;
+
 import java.awt.*;
 import javax.swing.*;
 
@@ -159,7 +161,7 @@ public class Panel extends JPanel {
 		profileThreeLabel.setBounds(new Rectangle(new Point(505, 180), profileThreeLabel.getPreferredSize()));
 
 		//---- favicon ----
-		favicon.setIcon(new ImageIcon("C:\\Users\\Shoga\\Desktop\\default.png"));
+		favicon.setIcon(new ImageIcon(PresenceOverflow.LARGE_ICON));
 		favicon.setFont(favicon.getFont().deriveFont(favicon.getFont().getSize() + 10f));
 		add(favicon);
 		favicon.setBounds(335, 250, 40, 31);

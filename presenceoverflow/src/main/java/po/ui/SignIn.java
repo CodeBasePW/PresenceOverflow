@@ -1,5 +1,7 @@
 package po.ui;
 
+import po.PresenceOverflow;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.net.URL;
@@ -37,19 +39,7 @@ public class SignIn extends JPanel {
         logo.setBounds(new Rectangle(new Point(65, 35), logo.getPreferredSize()));
 
         //---- favicon ----
-        BufferedImage image;
-
-        try {
-            URL url = new URL("https://assets.woahoverflow.org/favicon/default.png");
-            URLConnection con = url.openConnection();
-            con.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0 Mozilla/5.0 (Macintosh; Intel Mac OS X x.y; rv:42.0) Gecko/20100101 Firefox/42.0");
-            image = ImageIO.read(con.getInputStream());
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return;
-        }
-
-        favicon.setIcon(new ImageIcon(image));
+        favicon.setIcon(new ImageIcon(PresenceOverflow.LARGE_ICON));
         favicon.setFont(favicon.getFont().deriveFont(favicon.getFont().getSize() + 2f));
         add(favicon);
         favicon.setBounds(90, 15, 40, 30);

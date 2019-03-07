@@ -43,19 +43,9 @@ public class TrayMenu {
         final PopupMenu popup = new PopupMenu();
         BufferedImage image;
 
-        try {
-            URL url = new URL("https://assets.woahoverflow.org/favicon/dark-small.png");
-            URLConnection con = url.openConnection();
-            con.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0 Mozilla/5.0 (Macintosh; Intel Mac OS X x.y; rv:42.0) Gecko/20100101 Firefox/42.0");
-            image = ImageIO.read(con.getInputStream());
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return;
-        }
-
         final TrayIcon trayIcon =
                 new TrayIcon(
-                        new ImageIcon(image).getImage(), "PresenceOverflow", popup
+                        PresenceOverflow.SMALL_ICON, "PresenceOverflow", popup
                 );
         final SystemTray tray = SystemTray.getSystemTray();
 
