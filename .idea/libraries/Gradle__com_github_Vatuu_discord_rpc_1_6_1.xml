@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.Vatuu:discord-rpc:1.6.1">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/presenceoverflow/Could not find com.github.Vatuu:discord-rpc:1.6.1." />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.Vatuu/discord-rpc/1.6.1/b001e9070f3254cc9680e409af08a11fa7970432/discord-rpc-1.6.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.Vatuu/discord-rpc/1.6.1/e641755203529ed817db896145c45603afefb2fb/discord-rpc-1.6.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

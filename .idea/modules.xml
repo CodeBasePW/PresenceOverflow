@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/PresenceOverflow.iml" filepath="$PROJECT_DIR$/.idea/PresenceOverflow.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/org.woahoverflow.presenceoverflow.iml" filepath="$PROJECT_DIR$/.idea/modules/org.woahoverflow.presenceoverflow.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/org.woahoverflow.presenceoverflow.main.iml" filepath="$PROJECT_DIR$/.idea/modules/org.woahoverflow.presenceoverflow.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/org.woahoverflow.presenceoverflow.test.iml" filepath="$PROJECT_DIR$/.idea/modules/org.woahoverflow.presenceoverflow.test.iml" />
     </modules>
   </component>
 </project>

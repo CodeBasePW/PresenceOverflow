@@ -10,6 +10,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="org.woahoverflow.presenceoverflow.main" target="1.8" />
+      <module name="org.woahoverflow.presenceoverflow.test" target="1.8" />
       <module name="PresenceOverflow" target="1.8" />
       <module name="presenceoverflow" target="1.5" />
     </bytecodeTargetLevel>
