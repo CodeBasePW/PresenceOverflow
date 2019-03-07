@@ -2,6 +2,14 @@
 Modifies your Discord Rich Presence with a nice UI. <br/>
 You can download the most recent version [here](https://github.com/woahoverflow/PresenceOverflow/releases/download/v0.2.0-ALPHA/PresenceOverflow-0.2.0-ALPHA.jar).
 
+## Known Issues
++ Switching the name of the app in the Discord dashboard doesn't change it when reloading.
++ Sign in UI isn't the right size
++ Limited options for sign in (no register etc)
++ The end of the text options aren't the same (state, details etc)
++ Profiles are marked as green even though something's been altered
++ Signing in is basically useless (save conigs on cloud)
+
 ## How to
 To begin, head over to [here](https://discordapp.com/developers) and make sure you're signed in. After that, click on "New Application" on the dashboard. ![Dashboard](images/discord-dashboard.png "Dashboard")
 After that, create a name. This name does matter towards your presence. It's the bold lettering at the top (see the bottom). Copy the "Client ID" from this dashboard.
@@ -18,7 +26,7 @@ Go near the bottom, and click "Add Image(s)"
 After that, upload an image and select a name.
 Like it says, you cannot switch this name after.
 ![Upload Image](images/save-img.png "Upload Image")
-The name you selected in the dashboard, is what you'll put in your PresenceOverflow client. Make sure to add a caption to that image size as well.
+The name you selected in the dashboard, is what you'll put in your PresenceOverflow client as either the big or small image key. Make sure to add a caption to that image size as well.
 
 <br><br>
 ![Example Image](images/example.png "Example Image")<br>
