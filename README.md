@@ -17,6 +17,15 @@ After that, create a name. This name does matter towards your presence. It's the
 Once you've completed that, head back to your PresenceOverflow client. Put the Client ID into the client id section, and then insert a state. You only need a state, the others are optional. Once you've inserted what you want, click reload at the top right of the client. The "Unloaded" should turn into "Updated!".
 You can now simply close it, and get it back by opening your toolbar full of icons on the far right of your taskbar.
 
+## Troubleshooting
+If it's for some reason not showing, and you've followed all of the steps, please try some of these. <br/>
+**1**
+![Game Activity](images/game-activity.png "Game Activity Panel")
+Go into your Discord settings, go to Game Activity and enable "Display currently running game as a status message."
+<br />
+**2** <br />
+Remove all of the information from Big Image Key, and Big Image Caption, Small Image Key, and Small Image Caption.
+
 ## How to add images
 Make sure you've followed How To above before this. <br/>
 Go back to your [Discord Developers Dashboard](https://discordapp.com/developers), and go to the Art Assets section.
