@@ -1,8 +1,8 @@
-package org.woahoverflow.po.ui;
+package org.woahoverflow.po.v3.ui;
 
 import javax.swing.*;
 
-public class ExperimentalUI extends JFrame
+public class UI extends JFrame
 {
     private JPanel rootPanel;
     private JButton exitButton;
@@ -19,11 +19,28 @@ public class ExperimentalUI extends JFrame
     private JButton loadButton;
     private JButton saveButton;
 
-    public ExperimentalUI()
-    {
+    public UI() {
         add(rootPanel);
 
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
         setTitle("PresenceOverflowUI");
-        setSize(800, 600);
+        pack();
+
+        setVisible(true);
+    }
+
+    public void setData(UI data) {
+    }
+
+    public void getData(UI data) {
+    }
+
+    public boolean isModified(UI data) {
+        return false;
     }
 }

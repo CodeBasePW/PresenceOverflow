@@ -1,0 +1,60 @@
+package org.woahoverflow.po.v3.handle
+
+import com.mashape.unirest.http.Unirest
+import org.woahoverflow.po.v3.PresenceOverflow
+
+object AccountHandler {
+    var token: String? = null
+    var loggedIn: Boolean = false
+    var vip: Boolean = false
+    var name: String = ""
+    var id: Long = 0L
+
+    init {
+        // TODO remove
+        PresenceOverflow.LOGGER.debug(login("X", "X") + " : Login Result")
+    }
+    /**
+     * Logs in and unlocks some features
+     *
+     * Returning NULL means success
+     */
+    fun login(user: String, password: String): String? {
+        when {
+            user.length >= 30 || 3 > user.length -> return "Invalid username!"
+            password.length >= 1000 || 8 > password.length -> return "Invalid password!"
+        }
+
+        val resp = Unirest.post("https://api.woahoverflow.org/account/login")
+                .field("username", user)
+                .field("password", password)
+                .asJson()
+
+        if (resp.status != 200) return "Invalid username or password!"
+
+        token = resp.body.`object`.getJSONObject("message").getJSONObject("contents").getString("token")
+        vip = resp.body.`object`.getJSONObject("message").getJSONObject("contents").getJSONObject("scope").has("vip")
+
+        PresenceOverflow.LOGGER.debug("User VIP: $vip")
+
+        val username = Unirest.get("https://api.woahoverflow.org/account/get")
+                .queryString("token", token)
+                .queryString("value", "username/id")
+                .asJson()
+
+
+        name = username.body.`object`.getJSONObject("message").getJSONObject("contents").getString("username")
+        id = username.body.`object`.getJSONObject("message").getJSONObject("contents").getLong("id")
+        loggedIn = true
+
+        return null
+    }
+
+    /**
+     * Log out of the client
+     */
+    fun logout() {
+        token = null
+        loggedIn = false
+    }
+}

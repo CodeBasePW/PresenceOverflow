@@ -1,10 +1,9 @@
-package org.woahoverflow.po.ui;
+package org.woahoverflow.po.v3.handle;
 
-import org.woahoverflow.po.PresenceOverflow;
+import org.woahoverflow.po.v3.PresenceOverflow;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 /**
  * Manages the PresenceOverflow tray icon
@@ -37,11 +36,10 @@ public class TrayMenu {
         if (!SystemTray.isSupported()) return;
 
         final PopupMenu popup = new PopupMenu();
-        BufferedImage image;
 
         final TrayIcon trayIcon =
                 new TrayIcon(
-                        PresenceOverflow.SMALL_ICON, "PresenceOverflow", popup
+                        null /* TODO small icon */, "PresenceOverflow", popup
                 );
         final SystemTray tray = SystemTray.getSystemTray();
 
@@ -51,7 +49,7 @@ public class TrayMenu {
             e.printStackTrace();
         }
         // Create a popup menu components
-        SHOW.addActionListener((ev) -> UIManagerKt.getJFrame().setVisible(true));
+        SHOW.addActionListener((ev) -> {}/* TODO: SET VISIBLE*/);
 
         Font font = Font.getFont("Segoe UI");
         SHOW.setFont(font);
@@ -67,7 +65,7 @@ public class TrayMenu {
         try {
             tray.add(trayIcon);
         } catch (AWTException e) {
-            PresenceOverflow.LOGGER.error("There was an issue adding the Tray, ignoring.");
+            PresenceOverflow.getLOGGER().error("There was an issue adding the Tray, ignoring.");
         }
     }
 }
