@@ -1,7 +1,10 @@
 package org.woahoverflow.po.v3;
 
-import org.woahoverflow.po.v3.ui.Profiles;
+import mdlaf.MaterialLookAndFeel;
 import org.woahoverflow.po.v3.ui.UI;
+
+import javax.swing.UIManager;
+import javax.swing.UIManager.*;
 
 /**
  * The main instance for Presence Overflow.
@@ -12,8 +15,22 @@ import org.woahoverflow.po.v3.ui.UI;
  */
 public class POInstance {
     public static void main(String... args) {
+        try {
+            for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels())
+                System.out.println("Found L&F: " + info.getName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try
+        {
+            UIManager.setLookAndFeel(new MaterialLookAndFeel());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
         new UI();
-        new Profiles();
+        //new Profiles();
 
         keepAlive();
     }

@@ -8,7 +8,7 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="eb32d" class="javax.swing.JLabel">
+      <component id="eb32d" class="javax.swing.JLabel" binding="clientIDLabel">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -24,7 +24,7 @@
           <text value="Reload"/>
         </properties>
       </component>
-      <component id="ff4f2" class="javax.swing.JLabel">
+      <component id="ff4f2" class="javax.swing.JLabel" binding="detailsLabel">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -32,7 +32,7 @@
           <text value="Details"/>
         </properties>
       </component>
-      <component id="2c3b9" class="javax.swing.JLabel">
+      <component id="2c3b9" class="javax.swing.JLabel" binding="stateLabel">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -40,7 +40,7 @@
           <text value="State"/>
         </properties>
       </component>
-      <component id="36fb3" class="javax.swing.JLabel">
+      <component id="36fb3" class="javax.swing.JLabel" binding="bigImageKeyLabel">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -48,7 +48,7 @@
           <text value="Big Image Key"/>
         </properties>
       </component>
-      <component id="9e565" class="javax.swing.JLabel">
+      <component id="9e565" class="javax.swing.JLabel" binding="smallImageKeyLabel">
         <constraints>
           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -56,7 +56,7 @@
           <text value="Small Image Key"/>
         </properties>
       </component>
-      <component id="ed878" class="javax.swing.JLabel">
+      <component id="ed878" class="javax.swing.JLabel" binding="bigImageCaptionLabel">
         <constraints>
           <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -64,7 +64,7 @@
           <text value="Big Image Caption"/>
         </properties>
       </component>
-      <component id="75a31" class="javax.swing.JLabel">
+      <component id="75a31" class="javax.swing.JLabel" binding="smallImageCaptionLabel">
         <constraints>
           <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -72,7 +72,7 @@
           <text value="Small Image Caption"/>
         </properties>
       </component>
-      <component id="e8f69" class="javax.swing.JLabel">
+      <component id="e8f69" class="javax.swing.JLabel" binding="importPIDLabel">
         <constraints>
           <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -88,7 +88,7 @@
           <text value="Exit"/>
         </properties>
       </component>
-      <component id="ab872" class="javax.swing.JLabel">
+      <component id="ab872" class="javax.swing.JLabel" binding="profilesLabel">
         <constraints>
           <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -112,7 +112,7 @@
           <text value="Save"/>
         </properties>
       </component>
-      <component id="db5fb" class="javax.swing.JLabel">
+      <component id="db5fb" class="javax.swing.JLabel" binding="oneLabel">
         <constraints>
           <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -120,7 +120,7 @@
           <text value="One"/>
         </properties>
       </component>
-      <component id="e5a70" class="javax.swing.JButton" default-binding="true">
+      <component id="e5a70" class="javax.swing.JButton" binding="load2Button">
         <constraints>
           <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -128,7 +128,7 @@
           <text value="Load"/>
         </properties>
       </component>
-      <component id="72bb0" class="javax.swing.JButton" default-binding="true">
+      <component id="72bb0" class="javax.swing.JButton" binding="save2Button">
         <constraints>
           <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -136,7 +136,7 @@
           <text value="Save"/>
         </properties>
       </component>
-      <component id="88c40" class="javax.swing.JLabel">
+      <component id="88c40" class="javax.swing.JLabel" binding="twoLabel">
         <constraints>
           <grid row="5" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -144,7 +144,7 @@
           <text value="Two"/>
         </properties>
       </component>
-      <component id="6bbe3" class="javax.swing.JButton" default-binding="true">
+      <component id="6bbe3" class="javax.swing.JButton" binding="load3Button">
         <constraints>
           <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -152,7 +152,7 @@
           <text value="Load"/>
         </properties>
       </component>
-      <component id="7230d" class="javax.swing.JButton" default-binding="true">
+      <component id="7230d" class="javax.swing.JButton" binding="save3Button">
         <constraints>
           <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -160,7 +160,7 @@
           <text value="Save"/>
         </properties>
       </component>
-      <component id="d1ab" class="javax.swing.JLabel">
+      <component id="d1ab" class="javax.swing.JLabel" binding="threeLabel">
         <constraints>
           <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -168,7 +168,7 @@
           <text value="Three"/>
         </properties>
       </component>
-      <component id="cbd7d" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+      <component id="cbd7d" class="javax.swing.JTextField" binding="clientIDTextField">
         <constraints>
           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -176,7 +176,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="151ff" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+      <component id="151ff" class="javax.swing.JTextField" binding="detailsTextField">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -184,7 +184,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="24672" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+      <component id="24672" class="javax.swing.JTextField" binding="stateTextField">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -192,7 +192,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="8d607" class="javax.swing.JTextField" binding="textField4" default-binding="true">
+      <component id="8d607" class="javax.swing.JTextField" binding="bigImageKeyTextField">
         <constraints>
           <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -200,7 +200,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="ae603" class="javax.swing.JTextField" binding="textField6" default-binding="true">
+      <component id="ae603" class="javax.swing.JTextField" binding="bigImageCaptionTextField">
         <constraints>
           <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -208,7 +208,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="6fb91" class="javax.swing.JTextField" binding="textField7" default-binding="true">
+      <component id="6fb91" class="javax.swing.JTextField" binding="smallImageCaptionTextField">
         <constraints>
           <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -216,7 +216,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="9a3e2" class="javax.swing.JTextField" binding="textField8" default-binding="true">
+      <component id="9a3e2" class="javax.swing.JTextField" binding="importPIDTextField">
         <constraints>
           <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -224,7 +224,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="cfc7f" class="javax.swing.JTextField" binding="textField5" default-binding="true">
+      <component id="cfc7f" class="javax.swing.JTextField" binding="smallImageKeyTextField">
         <constraints>
           <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -232,7 +232,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="60e62" class="javax.swing.JTextField" binding="textField9" default-binding="true">
+      <component id="60e62" class="javax.swing.JTextField" binding="getPIDTextField">
         <constraints>
           <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -240,7 +240,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="60d34" class="javax.swing.JLabel">
+      <component id="60d34" class="javax.swing.JLabel" binding="getPIDLabel">
         <constraints>
           <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
