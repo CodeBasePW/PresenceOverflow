@@ -11,6 +11,9 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * The main class for PresenceOverflow
@@ -53,7 +56,7 @@ public class PresenceOverflow {
         }
 
         try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -62,5 +65,8 @@ public class PresenceOverflow {
         UIManagerKt.init();
 
         Runtime.getRuntime().addShutdownHook(new Thread(DiscordRPC::discordShutdown));
+
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        scheduler.scheduleAtFixedRate(new PresenceRotationThread(), 10, 3, TimeUnit.SECONDS);
     }
 }
