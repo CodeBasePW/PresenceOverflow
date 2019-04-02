@@ -1,6 +1,7 @@
 package org.woahoverflow.po.v3.handle
 
 import com.mashape.unirest.http.Unirest
+import org.slf4j.LoggerFactory
 import org.woahoverflow.po.v3.PresenceOverflow
 
 object AccountHandler {
@@ -12,7 +13,7 @@ object AccountHandler {
 
     init {
         // TODO remove
-        PresenceOverflow.LOGGER.debug(login("X", "X") + " : Login Result")
+        //PresenceOverflow.LOGGER.debug(login("X", "X") + " : Login Result")
     }
     /**
      * Logs in and unlocks some features
@@ -20,6 +21,8 @@ object AccountHandler {
      * Returning NULL means success
      */
     fun login(user: String, password: String): String? {
+        LoggerFactory.getLogger("PresenceOverflow").debug("performing login: $user, <REDACTED>")
+
         when {
             user.length >= 30 || 3 > user.length -> return "Invalid username!"
             password.length >= 1000 || 8 > password.length -> return "Invalid password!"
@@ -46,6 +49,8 @@ object AccountHandler {
         name = username.body.`object`.getJSONObject("message").getJSONObject("contents").getString("username")
         id = username.body.`object`.getJSONObject("message").getJSONObject("contents").getLong("id")
         loggedIn = true
+
+        PresenceOverflow.LOGGER.debug("token: $token")
 
         return null
     }

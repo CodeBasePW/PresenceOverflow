@@ -35,10 +35,10 @@ object ProfileHandler {
      */
     fun getProfiles(): ArrayList<Profile> {
         val wait = System.currentTimeMillis()
-        while (!AccountHandler.loggedIn) {
+        /*while (!AccountHandler.loggedIn) {
             PresenceOverflow.LOGGER.warn("Waiting for Account Handler to be logged in... Waited ${System.currentTimeMillis()-wait}ms")
             TimeUnit.SECONDS.sleep(5)
-        }
+        }*/
 
         val contents = Unirest.get("https://api.woahoverflow.org/presenceoverflow/profile/all")
                 .queryString("token", AccountHandler.token)

@@ -1,6 +1,7 @@
 package org.woahoverflow.po.v3;
 
 import mdlaf.MaterialLookAndFeel;
+import org.woahoverflow.po.v3.ui.Login;
 import org.woahoverflow.po.v3.ui.UI;
 
 import javax.swing.UIManager;
@@ -29,7 +30,8 @@ public class POInstance {
             ex.printStackTrace();
         }
 
-        new UI();
+        new Login();
+        //new UI();
         //new Profiles();
 
         keepAlive();
@@ -37,5 +39,10 @@ public class POInstance {
 
     private static void keepAlive() {
         while (true) {}
+    }
+
+    public static String longString(long val)
+    {
+        return Long.toString(val);
     }
 }
