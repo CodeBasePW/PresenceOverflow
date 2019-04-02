@@ -63,7 +63,8 @@ public class Login extends JFrame
             }
 
             setVisible(false);
-            new UI();
+            //new UI();
+            new Profiles();
         });
 
         exitButton.addActionListener(e ->
