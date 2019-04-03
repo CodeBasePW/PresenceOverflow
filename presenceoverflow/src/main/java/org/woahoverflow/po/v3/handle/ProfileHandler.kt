@@ -12,7 +12,7 @@ object ProfileHandler {
             val big_image_caption: String,
             val small_image_key: String,
             val small_image_caption: String,
-            val pid: String,
+            val pid: String?,
             val clientid: Long,
             val name: String,
             val owner: Long?
@@ -25,10 +25,9 @@ object ProfileHandler {
             big_image_caption: String,
             small_image_key: String,
             small_image_caption: String,
-            pid: String,
             clientid: Long,
             name: String
-    ): Profile = Profile(state, details, big_image_key, big_image_caption, small_image_key, small_image_caption, pid, clientid, name, AccountHandler.id)
+    ): Profile = Profile(state, details, big_image_key, big_image_caption, small_image_key, small_image_caption, null, clientid, name, AccountHandler.id)
 
     /**
      * Gets all profiles

@@ -3,13 +3,11 @@ package org.woahoverflow.po.v3.ui;
 import mdlaf.animation.MaterialUIMovement;
 import mdlaf.utils.MaterialColors;
 import org.woahoverflow.po.v3.PresenceOverflow;
-import org.woahoverflow.po.v3.handle.AccountHandler;
-import org.woahoverflow.po.v3.handle.DiscordHandler;
-import org.woahoverflow.po.v3.handle.ProfileHandler;
-import org.woahoverflow.po.v3.handle.UpdateHandler;
+import org.woahoverflow.po.v3.handle.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 import java.util.Random;
 
 public class UI extends JFrame
@@ -134,19 +132,18 @@ public class UI extends JFrame
             Random random = new Random();
 
             ProfileHandler.Profile profile = ProfileHandler.INSTANCE.createProfile
-            (
-                stateTextField.getText(),
-                detailsTextField.getText(),
-                bigImageKeyTextField.getText(),
-                bigImageCaptionTextField.getText(),
-                smallImageKeyTextField.getText(),
-                smallImageCaptionTextField.getText(),
-                Long.toString(random.nextLong()),
-                Long.parseLong(clientIDTextField.getText()),
-                "debug-" + random.nextInt(1000)
-            );
+                    (
+                            stateTextField.getText(),
+                            detailsTextField.getText(),
+                            bigImageKeyTextField.getText(),
+                            bigImageCaptionTextField.getText(),
+                            smallImageKeyTextField.getText(),
+                            smallImageCaptionTextField.getText(),
+                            Long.parseLong(clientIDTextField.getText()),
+                            Long.toString(random.nextLong())
+                    );
 
-            ProfileHandler.INSTANCE.saveProfile(profile.getPid());
+            //ProfileHandler.INSTANCE.saveProfile(profile.getPid());
         });
 
         load2Button.addActionListener(e ->
@@ -182,24 +179,23 @@ public class UI extends JFrame
         });
 
         reloadButton.addActionListener(e ->
-        {
-            DiscordHandler.refresh(new ProfileHandler.Profile
-            (
-                stateTextField.getText(),
-                detailsTextField.getText(),
-                bigImageKeyTextField.getText(),
-                bigImageCaptionTextField.getText(),
-                smallImageKeyTextField.getText(),
-                smallImageCaptionTextField.getText(),
-                getPIDTextField.getText(),
-                Long.parseLong(clientIDTextField.getText()),
-                AccountHandler.INSTANCE.getName(),
-                AccountHandler.INSTANCE.getId()
-            ));
-        });
+                DiscordHandler.refresh(new ProfileHandler.Profile
+                (
+                    stateTextField.getText(),
+                    detailsTextField.getText(),
+                    bigImageKeyTextField.getText(),
+                    bigImageCaptionTextField.getText(),
+                    smallImageKeyTextField.getText(),
+                    smallImageCaptionTextField.getText(),
+                    getPIDTextField.getText(),
+                    Long.parseLong(clientIDTextField.getText()),
+                    AccountHandler.INSTANCE.getName(),
+                    AccountHandler.INSTANCE.getId()
+                )));
 
         exitButton.addActionListener(e ->
         {
+            TrayMenu.exit();
             System.exit(0);
         });
 

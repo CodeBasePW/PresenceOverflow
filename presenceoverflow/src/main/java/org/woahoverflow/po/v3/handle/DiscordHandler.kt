@@ -19,7 +19,7 @@ object DiscordHandler {
         PresenceOverflow.LOGGER.debug("Running init for Discord")
         handlers = DiscordEventHandlers.Builder().setReadyEventHandler {
             PresenceOverflow.LOGGER.debug("User {} is now connected.", it.username)
-        }.setDisconnectedEventHandler { _, st ->
+        }.setDisconnectedEventHandler { _, _ ->
             PresenceOverflow.LOGGER.debug("User has disconnected.")
         }.build()
     }
