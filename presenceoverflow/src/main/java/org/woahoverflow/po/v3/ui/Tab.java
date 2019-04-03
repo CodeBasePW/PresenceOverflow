@@ -29,8 +29,11 @@ public class Tab
     private JButton exitButton;
     private JButton exportButton;
     private JButton selectButton;
+    private JButton deleteButton;
+    private JButton newButton;
+    private JButton saveButton;
 
-    public Tab(ProfileHandler.Profile profile)
+    public Tab(Profiles profiles, ProfileHandler.Profile profile)
     {
         Font roboto = new Font("Roboto Regular", Font.PLAIN, 12);
 
@@ -79,7 +82,46 @@ public class Tab
 
         selectButton.addActionListener(e ->
         {
-            DiscordHandler.refresh(profile);
+            ProfileHandler.Profile newProfile = ProfileHandler.INSTANCE.createProfile(
+                    stateTextField.getText(),
+                    detailsTextField.getText(),
+                    bigImageKeyTextField.getText(),
+                    bigImageCaptionTextField.getText(),
+                    smallImageKeyTextField.getText(),
+                    smallImageCaptionTextField.getText(),
+                    Long.parseLong(clientIDTextField.getText()),
+                    profile.getName());
+
+            DiscordHandler.refresh(newProfile);
+        });
+
+        newButton.addActionListener(e ->
+        {
+            CreateProfile dialog = new CreateProfile(profiles);
+            dialog.pack();
+            dialog.setVisible(true);
+        });
+
+        deleteButton.addActionListener(e ->
+        {
+            ProfileHandler.INSTANCE.deleteProfile(profile.getPid());
+
+            profiles.profiles.remove(rootPanel);
+        });
+
+        saveButton.addActionListener(e ->
+        {
+            ProfileHandler.Profile newProfile = ProfileHandler.INSTANCE.createProfile(
+                    stateTextField.getText(),
+                    detailsTextField.getText(),
+                    bigImageKeyTextField.getText(),
+                    bigImageCaptionTextField.getText(),
+                    smallImageKeyTextField.getText(),
+                    smallImageCaptionTextField.getText(),
+                    Long.parseLong(clientIDTextField.getText()),
+                    profile.getName());
+
+            ProfileHandler.INSTANCE.saveProfile(newProfile);
         });
     }
 }

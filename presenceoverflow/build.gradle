@@ -25,6 +25,7 @@ dependencies {
     compile 'com.github.kklisura.cdt:cdt-java-client:1.3.3'
     compile group: 'org.swinglabs', name: 'swingx', version: '1.6.1'
     compile 'com.github.vincenzopalazzo:material-ui-swing:V9.9'
+    compile group: 'com.github.vincenzopalazzo', name: 'material-ui-swing', version: 'V9.9'
 }
 
 jar {

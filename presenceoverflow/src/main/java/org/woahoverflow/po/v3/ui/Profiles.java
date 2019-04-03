@@ -16,7 +16,7 @@ public class Profiles extends JFrame
 
         for (ProfileHandler.Profile profile : PresenceOverflow.getPROFILES())
         {
-            Tab tab = new Tab(profile);
+            Tab tab = new Tab(this, profile);
 
             tab.clientIDTextField.setText(Long.toString(profile.getClientid()));
             tab.detailsTextField.setText(profile.getDetails());
