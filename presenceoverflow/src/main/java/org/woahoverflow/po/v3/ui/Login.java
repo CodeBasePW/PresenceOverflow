@@ -2,6 +2,7 @@ package org.woahoverflow.po.v3.ui;
 
 import mdlaf.animation.MaterialUIMovement;
 import mdlaf.utils.MaterialColors;
+import org.woahoverflow.po.v3.POInstance;
 import org.woahoverflow.po.v3.PresenceOverflow;
 import org.woahoverflow.po.v3.handle.AccountHandler;
 
@@ -64,7 +65,8 @@ public class Login extends JFrame
 
             setVisible(false);
             //new UI();
-            new Profiles();
+
+            POInstance.loggedIn();
         });
 
         exitButton.addActionListener(e ->

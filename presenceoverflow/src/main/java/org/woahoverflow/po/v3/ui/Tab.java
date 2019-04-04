@@ -3,11 +3,16 @@ package org.woahoverflow.po.v3.ui;
 import mdlaf.animation.MaterialUIMovement;
 import mdlaf.utils.MaterialColors;
 import org.woahoverflow.po.v3.PresenceOverflow;
+import org.woahoverflow.po.v3.PresenceRotationThread;
 import org.woahoverflow.po.v3.handle.DiscordHandler;
 import org.woahoverflow.po.v3.handle.ProfileHandler;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 public class Tab
 {
@@ -32,6 +37,9 @@ public class Tab
     private JButton deleteButton;
     private JButton newButton;
     private JButton saveButton;
+    private JButton managerButton;
+
+    private boolean rotate = false;
 
     public Tab(Profiles profiles, ProfileHandler.Profile profile)
     {
@@ -111,6 +119,9 @@ public class Tab
 
         saveButton.addActionListener(e ->
         {
+            if (clientIDTextField.getText().isEmpty())
+                clientIDTextField.setText("0");
+
             ProfileHandler.Profile newProfile = ProfileHandler.INSTANCE.createProfile(
                     stateTextField.getText(),
                     detailsTextField.getText(),
@@ -122,6 +133,11 @@ public class Tab
                     profile.getName());
 
             ProfileHandler.INSTANCE.saveProfile(newProfile);
+        });
+
+        managerButton.addActionListener(e ->
+        {
+            new RotationManager();
         });
     }
 }

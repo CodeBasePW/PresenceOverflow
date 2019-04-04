@@ -1,5 +1,6 @@
 package org.woahoverflow.po.v3.ui;
 
+import org.woahoverflow.po.v3.POInstance;
 import org.woahoverflow.po.v3.PresenceOverflow;
 import org.woahoverflow.po.v3.handle.ProfileHandler;
 
@@ -18,13 +19,13 @@ public class Profiles extends JFrame
         {
             Tab tab = new Tab(this, profile);
 
-            tab.clientIDTextField.setText(Long.toString(profile.getClientid()));
-            tab.detailsTextField.setText(profile.getDetails());
-            tab.stateTextField.setText(profile.getState());
-            tab.bigImageKeyTextField.setText(profile.getBig_image_key());
-            tab.bigImageCaptionTextField.setText(profile.getBig_image_caption());
-            tab.smallImageCaptionTextField.setText(profile.getSmall_image_caption());
-            tab.smallImageKeyTextField.setText(profile.getSmall_image_key());
+            tab.clientIDTextField.setText(Long.toString(profile.getClientid()).replace(POInstance.control_hash, ""));
+            tab.detailsTextField.setText(profile.getDetails().replace(POInstance.control_hash, ""));
+            tab.stateTextField.setText(profile.getState().replace(POInstance.control_hash, ""));
+            tab.bigImageKeyTextField.setText(profile.getBig_image_key().replace(POInstance.control_hash, ""));
+            tab.bigImageCaptionTextField.setText(profile.getBig_image_caption().replace(POInstance.control_hash, ""));
+            tab.smallImageCaptionTextField.setText(profile.getSmall_image_caption().replace(POInstance.control_hash, ""));
+            tab.smallImageKeyTextField.setText(profile.getSmall_image_key().replace(POInstance.control_hash, ""));
 
             profiles.add(profile.getName(), tab.rootPanel);
         }

@@ -41,21 +41,29 @@ object DiscordHandler {
             return
         }
 
-        val debug = String.format("Updating presence: Profile(%s, %s, %s, %s, %s, %s, %s)",
-                profile.clientid,
-                profile.details,
-                profile.state,
-                profile.big_image_key,
-                profile.small_image_key,
-                profile.big_image_caption,
-                profile.small_image_caption)
-        PresenceOverflow.LOGGER.debug(debug)
+        var state: String = profile.state
+        var details: String = profile.details
+        var big_image_key: String = profile.big_image_key
+        var big_image_caption: String = profile.big_image_caption
+        var small_image_key: String = profile.small_image_key
+        var small_image_caption: String = profile.small_image_caption
 
-        val presence = DiscordRichPresence.Builder(profile.state)
+        if (details.equals(POInstance.control_hash))
+            details = ""
+        if (big_image_key.equals(POInstance.control_hash))
+            big_image_key = ""
+        if (big_image_caption.equals(POInstance.control_hash))
+            big_image_caption = ""
+        if (small_image_key.equals(POInstance.control_hash))
+            small_image_key = ""
+        if (small_image_caption.equals(POInstance.control_hash))
+            small_image_caption = ""
 
-        if (profile.details != "") presence.setDetails(profile.details)
-        if (profile.big_image_key != "") presence.setBigImage(profile.big_image_key, profile.big_image_caption)
-        if (profile.small_image_key != "") presence.setSmallImage(profile.small_image_key, profile.small_image_caption)
+        val presence = DiscordRichPresence.Builder(state)
+
+        if (details != "") presence.setDetails(details)
+        if (big_image_key != "") presence.setBigImage(big_image_key, big_image_caption)
+        if (small_image_key != "") presence.setSmallImage(small_image_key, small_image_caption)
 
         DiscordRPC.discordUpdatePresence(presence.build())
         PresenceOverflow.LOGGER.debug("Updated presence!")
