@@ -17,7 +17,11 @@ object ProfileHandler {
             val clientid: Long,
             val name: String,
             val owner: Long?
-    )
+    ) {
+        override fun toString(): String {
+            return name
+        }
+    }
 
     fun createProfile(
             state: String,

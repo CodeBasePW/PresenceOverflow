@@ -5,14 +5,14 @@ import java.util.Random;
 
 public class RotationManager extends JFrame
 {
-    private JList rotationList;
+    public JList rotationList;
     private JPanel rootPanel;
     private JButton moveUpButton;
     private JButton moveDownButton;
     private JButton addButton;
     private JButton removeButton;
 
-    private DefaultListModel model;
+    public DefaultListModel model;
 
     public RotationManager()
     {
@@ -26,13 +26,14 @@ public class RotationManager extends JFrame
 
         addButton.addActionListener(e ->
         {
-            rotationList.setSelectedIndex(0);
-            model.addElement("debug-" + new Random().nextInt(1000));
+            new SelectProfile(this);
         });
 
         removeButton.addActionListener(e ->
         {
             int index = rotationList.getSelectedIndex();
+            if (index < 0)
+                return;
             model.remove(rotationList.getSelectedIndex());
             rotationList.setSelectedIndex(index);
         });
