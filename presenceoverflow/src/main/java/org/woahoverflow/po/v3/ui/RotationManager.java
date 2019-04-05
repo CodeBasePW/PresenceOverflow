@@ -1,7 +1,10 @@
 package org.woahoverflow.po.v3.ui;
 
+import org.woahoverflow.po.v3.PresenceRotationThread;
+import org.woahoverflow.po.v3.handle.ProfileHandler;
+
 import javax.swing.*;
-import java.util.Random;
+import java.util.ArrayList;
 
 public class RotationManager extends JFrame
 {
@@ -11,8 +14,19 @@ public class RotationManager extends JFrame
     private JButton moveDownButton;
     private JButton addButton;
     private JButton removeButton;
+    private JButton refreshButton;
 
-    public DefaultListModel model;
+    public static DefaultListModel model;
+
+    public static ArrayList<ProfileHandler.Profile> getRotation()
+    {
+        ArrayList<ProfileHandler.Profile> list = new ArrayList<>();
+        for (int i = 0; i < model.getSize(); i++)
+        {
+            list.add((ProfileHandler.Profile)model.get(i));
+        }
+        return list;
+    }
 
     public RotationManager()
     {
@@ -54,6 +68,14 @@ public class RotationManager extends JFrame
                 return;
             swapElements(index, index + 1);
             rotationList.setSelectedIndex(index + 1);
+        });
+
+        refreshButton.addActionListener(e ->
+        {
+            for (int i = 0; i < model.getSize(); i++)
+            {
+                PresenceRotationThread.setRotation((ProfileHandler.Profile)model.get(i), i);
+            }
         });
 
         pack();
