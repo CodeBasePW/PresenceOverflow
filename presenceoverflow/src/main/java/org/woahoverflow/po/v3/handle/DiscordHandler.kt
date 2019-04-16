@@ -5,6 +5,7 @@ import net.arikia.dev.drpc.DiscordRPC
 import net.arikia.dev.drpc.DiscordRichPresence
 import org.woahoverflow.po.v3.POInstance
 import org.woahoverflow.po.v3.PresenceOverflow
+import org.woahoverflow.po.v3.Util
 
 /**
  * Manages the Discord RP
@@ -48,15 +49,15 @@ object DiscordHandler {
         var small_image_key: String = profile.small_image_key
         var small_image_caption: String = profile.small_image_caption
 
-        if (details.equals(POInstance.control_hash))
+        if (details.equals(Util.getControlHash()))
             details = ""
-        if (big_image_key.equals(POInstance.control_hash))
+        if (big_image_key.equals(Util.getControlHash()))
             big_image_key = ""
-        if (big_image_caption.equals(POInstance.control_hash))
+        if (big_image_caption.equals(Util.getControlHash()))
             big_image_caption = ""
-        if (small_image_key.equals(POInstance.control_hash))
+        if (small_image_key.equals(Util.getControlHash()))
             small_image_key = ""
-        if (small_image_caption.equals(POInstance.control_hash))
+        if (small_image_caption.equals(Util.getControlHash()))
             small_image_caption = ""
 
         val presence = DiscordRichPresence.Builder(state)

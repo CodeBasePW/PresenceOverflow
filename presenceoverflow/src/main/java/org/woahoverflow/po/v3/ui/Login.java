@@ -4,6 +4,7 @@ import mdlaf.animation.MaterialUIMovement;
 import mdlaf.utils.MaterialColors;
 import org.woahoverflow.po.v3.POInstance;
 import org.woahoverflow.po.v3.PresenceOverflow;
+import org.woahoverflow.po.v3.Util;
 import org.woahoverflow.po.v3.handle.AccountHandler;
 
 import javax.swing.*;
@@ -27,9 +28,7 @@ public class Login extends JFrame
 
         Font roboto = new Font("Roboto Regular", Font.PLAIN, 12);
 
-        // label fonts
-        usernameLabel.setFont(roboto);
-        passwordLabel.setFont(roboto);
+        getRootPane().setDefaultButton(loginButton);
 
         // button fonts
         loginButton.setFont(roboto);
@@ -38,7 +37,6 @@ public class Login extends JFrame
 
         // text field fonts
         usernameTextField.setFont(roboto);
-        passwordTextField.setFont(roboto);
 
         loginButton.setBackground(MaterialColors.LIGHT_BLUE_400);
         loginButton.setForeground(Color.WHITE);
@@ -55,7 +53,21 @@ public class Login extends JFrame
 
         loginButton.addActionListener(e ->
         {
-            AccountHandler.INSTANCE.login(usernameTextField.getText(), passwordTextField.getText());
+            boolean success = AccountHandler.INSTANCE.login(usernameTextField.getText(), passwordTextField.getText());
+
+            if (!success)
+            {
+                int result = JOptionPane.showConfirmDialog(null, "Login failed! Would you like to try again?", "Login failed", JOptionPane.YES_NO_OPTION);
+                if (result == JOptionPane.YES_OPTION)
+                {
+                    new Login();
+                    setVisible(false);
+                    dispose();
+                    return;
+                } else {
+                    System.exit(0);
+                }
+            }
 
             while (!AccountHandler.INSTANCE.getLoggedIn())
             {
@@ -71,10 +83,14 @@ public class Login extends JFrame
 
         exitButton.addActionListener(e ->
         {
-            System.exit(0);
+            if (Util.askExit())
+                System.exit(0);
         });
 
+        guestButton.setEnabled(false);
+
         setLocationRelativeTo(null);
+        setResizable(false);
 
         pack();
         setVisible(true);

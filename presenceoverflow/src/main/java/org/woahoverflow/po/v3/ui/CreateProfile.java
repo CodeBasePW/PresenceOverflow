@@ -2,6 +2,7 @@ package org.woahoverflow.po.v3.ui;
 
 import mdlaf.animation.MaterialUIMovement;
 import mdlaf.utils.MaterialColors;
+import org.woahoverflow.po.v3.Util;
 import org.woahoverflow.po.v3.handle.ProfileHandler;
 
 import javax.swing.*;
@@ -65,21 +66,15 @@ public class CreateProfile extends JDialog
         {
             onCancel();
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+
+        setLocationRelativeTo(null);
     }
 
     private void onOK()
     {
-        ProfileHandler.Profile newProfile = ProfileHandler.INSTANCE.createProfile(
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                0,
-                nameTextField.getText());
-
-        profiles.profiles.add(nameTextField.getText(), new Tab(profiles, newProfile).rootPanel);
+        ProfileHandler.Profile newProfile = Util.createBlankProfile(nameTextField.getText());
+        Tab tab = new Tab(profiles, newProfile);
+        profiles.profiles.add(nameTextField.getText(), tab.rootPanel);
 
         dispose();
     }

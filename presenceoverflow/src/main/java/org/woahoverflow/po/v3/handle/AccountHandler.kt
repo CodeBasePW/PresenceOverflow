@@ -20,12 +20,12 @@ object AccountHandler {
      *
      * Returning NULL means success
      */
-    fun login(user: String, password: String): String? {
+    fun login(user: String, password: String): Boolean? {
         LoggerFactory.getLogger("PresenceOverflow").debug("performing login: $user, <REDACTED>")
 
         when {
-            user.length >= 30 || 3 > user.length -> return "Invalid username!"
-            password.length >= 1000 || 8 > password.length -> return "Invalid password!"
+            user.length >= 30 || 3 > user.length -> return false
+            password.length >= 1000 || 8 > password.length -> return false
         }
 
         val resp = Unirest.post("https://api.woahoverflow.org/account/login")
@@ -33,7 +33,7 @@ object AccountHandler {
                 .field("password", password)
                 .asJson()
 
-        if (resp.status != 200) return "Invalid username or password!"
+        if (resp.status != 200) return false
 
         token = resp.body.`object`.getJSONObject("message").getJSONObject("contents").getString("token")
         vip = resp.body.`object`.getJSONObject("message").getJSONObject("contents").getJSONObject("scope").has("vip")
@@ -52,7 +52,7 @@ object AccountHandler {
 
         PresenceOverflow.LOGGER.debug("token: $token")
 
-        return null
+        return true
     }
 
     /**

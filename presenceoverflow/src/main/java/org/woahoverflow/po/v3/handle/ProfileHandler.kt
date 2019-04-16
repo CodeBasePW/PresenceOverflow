@@ -3,6 +3,7 @@ package org.woahoverflow.po.v3.handle
 import com.mashape.unirest.http.Unirest
 import org.woahoverflow.po.v3.POInstance
 import org.woahoverflow.po.v3.PresenceOverflow
+import org.woahoverflow.po.v3.Util
 import java.util.concurrent.TimeUnit
 
 object ProfileHandler {
@@ -115,21 +116,21 @@ object ProfileHandler {
         var name: String = profile.name
 
         if (state.isBlank())
-            state = POInstance.control_hash
+            state = Util.getControlHash()
         if (details.isBlank())
-            details = POInstance.control_hash
+            details = Util.getControlHash()
         if (big_image_key.isBlank())
-            big_image_key = POInstance.control_hash
+            big_image_key = Util.getControlHash()
         if (big_image_caption.isBlank())
-            big_image_caption = POInstance.control_hash
+            big_image_caption = Util.getControlHash()
         if (small_image_key.isBlank())
-            small_image_key = POInstance.control_hash
+            small_image_key = Util.getControlHash()
         if (small_image_caption.isBlank())
-            small_image_caption = POInstance.control_hash
+            small_image_caption = Util.getControlHash()
         if (clientid == null)
             clientid = 0
         if (name.isBlank())
-            name = POInstance.control_hash
+            name = Util.getControlHash()
 
         val resp = Unirest.post("https://api.woahoverflow.org/presenceoverflow/profile")
                 .field("state", state)
@@ -187,6 +188,10 @@ object ProfileHandler {
                 .asJson()
 
         PresenceOverflow.refreshProfiles()
+
+        if (resp.status != 200)
+            PresenceOverflow.LOGGER.debug("Failed edit request: ${resp.body}")
+
         return resp.status == 200
     }
 
