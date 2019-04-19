@@ -1,5 +1,6 @@
 package org.woahoverflow.po.v3;
 
+import net.arikia.dev.drpc.DiscordRPC;
 import org.woahoverflow.po.v3.handle.DiscordHandler;
 import org.woahoverflow.po.v3.handle.ProfileHandler;
 
@@ -8,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 public class PresenceRotationThread extends Thread
 {
     public static int rotationDelay = 5;
-    public static ProfileHandler.Profile[] rotation = new ProfileHandler.Profile[1000];
+    public static ProfileHandler.Profile[] rotation = new ProfileHandler.Profile[20];
 
     public static void setRotation(ProfileHandler.Profile profile, int position)
     {
@@ -28,7 +29,6 @@ public class PresenceRotationThread extends Thread
         int index = 0;
         while (running)
         {
-            try { TimeUnit.SECONDS.sleep(rotationDelay); } catch (Exception ex) { ex.printStackTrace(); }
             ProfileHandler.Profile profile = rotation[index];
             if (profile != null)
                 DiscordHandler.refresh(profile);
@@ -37,6 +37,7 @@ public class PresenceRotationThread extends Thread
                 continue;
             }
             index++;
+            try { TimeUnit.SECONDS.sleep(rotationDelay); } catch (Exception ex) { ex.printStackTrace(); }
         }
     }
 

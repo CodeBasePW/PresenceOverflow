@@ -68,5 +68,6 @@ object DiscordHandler {
 
         DiscordRPC.discordUpdatePresence(presence.build())
         PresenceOverflow.LOGGER.debug("Updated presence!")
+        //Util.logProfile(profile)
     }
 }

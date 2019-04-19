@@ -2,7 +2,6 @@ package org.woahoverflow.po.v3;
 
 import org.woahoverflow.po.v3.handle.ProfileHandler;
 import org.woahoverflow.po.v3.ui.Profiles;
-import org.woahoverflow.po.v3.ui.Tab;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,6 +12,20 @@ import java.security.MessageDigest;
 
 public class Util
 {
+    public static void logProfile(ProfileHandler.Profile profile)
+    {
+        PresenceOverflow.getLOGGER().debug("Profile({}, {}, {}, {}, {}, {}, {}, {})",
+                handle_control_string(profile.getState()),
+                handle_control_string(profile.getDetails()),
+                handle_control_string(profile.getBig_image_key()),
+                handle_control_string(profile.getBig_image_caption()),
+                handle_control_string(profile.getSmall_image_key()),
+                handle_control_string(profile.getSmall_image_caption()),
+                profile.getClientid(),
+                profile.getName()
+        );
+    }
+
     public static ProfileHandler.Profile fixProfile(ProfileHandler.Profile input)
     {
         ProfileHandler.Profile output = new ProfileHandler.Profile(

@@ -2,7 +2,9 @@ package org.woahoverflow.po.v3.ui;
 
 import mdlaf.animation.MaterialUIMovement;
 import mdlaf.utils.MaterialColors;
+import net.arikia.dev.drpc.DiscordRPC;
 import org.woahoverflow.po.v3.PresenceRotationThread;
+import org.woahoverflow.po.v3.Util;
 import org.woahoverflow.po.v3.handle.ProfileHandler;
 
 import javax.swing.*;
@@ -18,6 +20,7 @@ public class RotationManager extends JFrame
     private JButton addButton;
     private JButton removeButton;
     private JButton refreshButton;
+    private JSpinner secondsSpinner;
 
     public static DefaultListModel model;
 
@@ -35,7 +38,9 @@ public class RotationManager extends JFrame
     {
         add(rootPanel);
 
-        setMinimumSize(new Dimension(600, 450));
+        setMinimumSize(new Dimension(300, 300));
+        setPreferredSize(new Dimension(300, 300));
+        setMaximumSize(new Dimension(900, 900));
 
         model = new DefaultListModel();
         rotationList.setModel(model);
@@ -72,6 +77,9 @@ public class RotationManager extends JFrame
         MaterialUIMovement.add(removeButton, MaterialColors.LIGHT_BLUE_500, 5, 1000 / 30);
         MaterialUIMovement.add(refreshButton, MaterialColors.LIGHT_BLUE_500, 5, 1000 / 30);
 
+        SpinnerNumberModel spinnerModel = new SpinnerNumberModel();
+        secondsSpinner.setModel(spinnerModel);
+
         addButton.addActionListener(e ->
         {
             new SelectProfile(this);
@@ -84,6 +92,7 @@ public class RotationManager extends JFrame
                 return;
             model.remove(rotationList.getSelectedIndex());
             rotationList.setSelectedIndex(index);
+            PresenceRotationThread.setRotation(null, index);
         });
 
         moveUpButton.addActionListener(e ->
@@ -106,13 +115,41 @@ public class RotationManager extends JFrame
 
         refreshButton.addActionListener(e ->
         {
+            try
+            {
+                PresenceRotationThread.rotationDelay = (int)secondsSpinner.getValue();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                return;
+            }
+
             for (int i = 0; i < model.getSize(); i++)
             {
                 PresenceRotationThread.setRotation((ProfileHandler.Profile)model.get(i), i);
             }
 
+            boolean empty = true;
+            for (ProfileHandler.Profile p : PresenceRotationThread.rotation)
+                if (p != null)
+                    empty = false;
+            if (empty)
+                DiscordRPC.discordClearPresence();
+
             JOptionPane.showMessageDialog(null, "Successfully refreshed the presence rotation.", "Success!", JOptionPane.INFORMATION_MESSAGE);
         });
+
+        if (PresenceRotationThread.rotation.length >= 1)
+        {
+            for (ProfileHandler.Profile p : PresenceRotationThread.rotation)
+            {
+                if (p != null)
+                    model.addElement(p);
+            }
+        }
+
+        spinnerModel.setMinimum(1);
+        spinnerModel.setMaximum(1000);
+        spinnerModel.setValue(PresenceRotationThread.rotationDelay);
 
         pack();
         setLocationRelativeTo(null);
